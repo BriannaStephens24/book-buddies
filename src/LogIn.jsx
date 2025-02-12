@@ -8,7 +8,11 @@ return (
 
 <form>
 <input 
-placeholder="Username"
+placeholder="Username (Email)"
+/>
+
+<input
+placeholder="Password"
 />
 
 <button>Log In</button>
