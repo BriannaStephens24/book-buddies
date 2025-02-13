@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
 const IndividualBooks = () => {
   const [book, setBook] = useState(null);
@@ -7,6 +7,7 @@ const IndividualBooks = () => {
   const [error, setError] = useState(null);
   
   const { bookid } = useParams();
+  const navigate = useNavigate();
   
   useEffect(() => {
     const fetchBookDetails = async () => {
@@ -36,9 +37,13 @@ const IndividualBooks = () => {
     return <p style={{ color: 'red' }}>{error}</p>;
   }
 
+  const goBackToCatalog = () => {
+    navigate('/Catalog')
+
+  }
+
   return (
     <>
-      <Link to="/">Back to Book List</Link>
       <div className="IndividualBookContainer">
         {book && (
           <>
@@ -56,6 +61,9 @@ const IndividualBooks = () => {
           </>
         )}
       </div>
+      <button onClick={goBackToCatalog}>Back To Catalog</button>
+
+    
     </>
   );
 };
